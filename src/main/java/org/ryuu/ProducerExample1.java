@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 public class ProducerExample1 {
-    private static final Logger logger = LoggerFactory.getLogger(ProducerExample1.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProducerExample1.class);
 
     static void main() {
         // Endpoint address, set to the Proxy address and port list, usually xxx:8080;xxx:8081
@@ -36,9 +36,9 @@ public class ProducerExample1 {
                     .setBody("messageBody".getBytes())
                     .build();
             SendReceipt sendReceipt = producer.send(message);
-            logger.info("Send message successfully, messageId={}", sendReceipt.getMessageId());
+            LOGGER.info("Send message successfully, messageId={}", sendReceipt.getMessageId());
         } catch (ClientException e) {
-            logger.error("Failed to send message", e);
+            LOGGER.error("Failed to send message", e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
